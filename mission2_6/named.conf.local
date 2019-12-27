@@ -1,0 +1,42 @@
+//
+// Do any local configuration here
+//
+
+zone "www.bombast.com" {
+	type slave;
+        //file "/etc/bind/zones/db.www.bombast.com";
+	file "zones/db.www.bombast.com.signed";
+	//masters { 10.4.7.4; };
+	//allow-transfer { 10.4.7.4; };
+        masters { 192.168.1.4; };
+        allow-transfer { 192.168.1.4; };
+};
+
+zone "www.carter.com" {
+	type slave;
+	file "zones/db.www.carter.com.signed";
+	//file "/etc/bind/zones/db.www.carter.com";
+	//masters { 10.4.7.4; };
+	//allow-transfer { 10.4.7.4; };
+	masters { 192.168.1.4; };
+	allow-transfer { 192.168.1.4; };
+};
+
+zone "1.168.192.in-addr.arpa" {
+	type slave; 
+	file "/etc/bind/zones/db.192.168.1";
+	masters { 192.168.1.4; };
+	allow-transfer { 192.168.1.4; };
+};
+
+//zone "7.4.10.in-addr.arpa" {
+//	type slave; 
+//	file "zones/db.10.4.7";
+//	masters { 10.4.7.4; };
+//	allow-transfer { 10.4.7.4; };
+//};
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
